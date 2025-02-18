@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.src, {
+mongoose.connect("mongodb+srv://thinhlvqse171791:nb0rBIwX85ITPhTF@cluster0.haymn.mongodb.net/", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
