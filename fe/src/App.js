@@ -4,6 +4,7 @@ import CreateNote from './components/CreateNote';
 import ViewNote from './components/ViewNote';
 import AccessNote from './components/AccessNote';
 import './App.css';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/access" element={<AccessNote />} />
             <Route path="/note/:code" element={<ViewNote />} />
             <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </main>
         <footer>

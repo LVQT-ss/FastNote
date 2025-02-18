@@ -98,4 +98,29 @@ router.put('/:code', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
+
+// Delete a note by code
+router.delete('/:code', async (req, res) => {
+    try {
+        const { code } = req.params;
+        if (!code || !/^\d{4}$/.test(code)) {
+            return res.status(400).json({ message: 'Invalid code format' });
+        }
+
+        const deletedNote = await Note.findOneAndDelete({ code });
+
+        if (!deletedNote) {
+            return res.status(404).json({ message: 'Note not found' });
+        }
+
+        res.json({
+            message: 'Note deleted successfully',
+            code: deletedNote.code
+        });
+    } catch (error) {
+        console.error('Error deleting note:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
 module.exports = router;
